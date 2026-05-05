@@ -1,0 +1,31 @@
+name: Bài 4 - Matrix Testing
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  multi-os-build:
+    strategy:
+      # Matrix Strategy: Tự động tạo ra 3 bản build chạy song song
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    
+    # Sử dụng biến matrix.os để chọn hệ điều hành tương ứng
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build and Test on ${{ matrix.os }}
+      # Giữ nguyên đường dẫn đến bài 3 như cũ
+      run: mvn -B package --file bai4/pom.xml

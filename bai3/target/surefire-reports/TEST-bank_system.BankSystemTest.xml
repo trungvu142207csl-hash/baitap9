@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.practice.maven.MathUtilsTest" time="0.188" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="bank_system.BankSystemTest" time="0.125" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -59,19 +59,31 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testLoggingAndJUnit5" classname="com.practice.maven.MathUtilsTest" time="0.003">
-    <system-out><![CDATA[20:19:12.215 [main] INFO com.practice.maven.MathUtilsTest -- Đang chạy kiểm thử với JUnit Jupiter 5.9.2...
-20:19:12.216 [main] WARN com.practice.maven.MathUtilsTest -- Đây là một thông báo log có cấu trúc thay vì System.out.println
+  <testcase name="testTransactionHistory" classname="bank_system.BankSystemTest" time="0.028">
+    <system-out><![CDATA[20:19:12.165 [main] INFO bank_system.Account -- >>> [LOGGING] summary process started for type: 1
+20:19:12.168 [main] INFO bank_system.Account -- >>> [LOGGING] summary process started for type: 2
+20:19:12.168 [main] INFO bank_system.Account -- [DEBUG] Đã lấy lịch sử cho tài khoản: 12345
+20:19:12.169 [main] INFO bank_system.BankSystemTest -- Lịch sử giao dịch: 
+Lịch sử giao dịch của tài khoản 12345:
+- Kiểu giao dịch: Nạp tiền vãng lai. Số dư ban đầu: $1000.00. Số tiền: $200.00. Số dư cuối: $1200.00.
+- Kiểu giao dịch: Rút tiền vãng lai. Số dư ban đầu: $1200.00. Số tiền: $100.00. Số dư cuối: $1100.00.
 ]]></system-out>
   </testcase>
-  <testcase name="testHibernateInitialization" classname="com.practice.maven.MathUtilsTest" time="0.178">
-    <system-out><![CDATA[20:19:12.279 [main] DEBUG org.jboss.logging -- Logging Provider: org.jboss.logging.Slf4jLoggerProvider
-20:19:12.294 [main] DEBUG org.hibernate.integrator.internal.IntegratorServiceImpl -- Adding Integrator [org.hibernate.boot.beanvalidation.BeanValidationIntegrator].
-20:19:12.306 [main] DEBUG org.hibernate.integrator.internal.IntegratorServiceImpl -- Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
-20:19:12.356 [main] INFO org.hibernate.Version -- HHH000412: Hibernate ORM core version 6.2.0.Final
-20:19:12.358 [main] DEBUG org.hibernate.cfg.Environment -- HHH000206: hibernate.properties not found
-20:19:12.359 [main] INFO org.hibernate.cfg.Environment -- HHH000406: Using bytecode reflection optimizer
-20:19:12.396 [main] INFO com.practice.maven.MathUtilsTest -- Hibernate Core 6.2.0.Final đã được nạp thành công vào dự án!
+  <testcase name="testInsufficientFunds" classname="bank_system.BankSystemTest" time="0.005">
+    <system-out><![CDATA[20:19:12.183 [main] INFO bank_system.BankSystemTest -- Bắt đầu test rút tiền khi số dư không đủ...
+Số dư tài khoản không đủ $2000.00 để thực hiện giao dịch
+20:19:12.184 [main] ERROR bank_system.BankSystemTest -- Đã chặn giao dịch rút tiền vượt quá số dư hiện có.
+]]></system-out>
+  </testcase>
+  <testcase name="testDepositLogging" classname="bank_system.BankSystemTest" time="0.003">
+    <system-out><![CDATA[20:19:12.188 [main] INFO bank_system.BankSystemTest -- Bắt đầu test nạp tiền cho CheckingAccount...
+20:19:12.189 [main] INFO bank_system.BankSystemTest -- Nạp tiền thành công. Số dư hiện tại: 1500.0
+]]></system-out>
+  </testcase>
+  <testcase name="testWithdrawSavingsLimit" classname="bank_system.BankSystemTest" time="0.004">
+    <system-out><![CDATA[20:19:12.193 [main] INFO bank_system.BankSystemTest -- Bắt đầu test rút tiền quá hạn mức (1000$) của tài khoản tiết kiệm...
+20:19:12.194 [main] ERROR bank_system.Account -- Rut tien bi loi!
+20:19:12.195 [main] WARN bank_system.BankSystemTest -- Giao dịch rút 2000$ thất bại theo đúng thiết kế (Hạn mức 1000$).
 ]]></system-out>
   </testcase>
 </testsuite>

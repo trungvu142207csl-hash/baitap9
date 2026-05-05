@@ -15,7 +15,11 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\dell\OneDrive\Desktop\jdk25\jdk-25.0.2\bin"/>
+<<<<<<< HEAD
     <property name="sun.java.command" value="C:\Users\dell\AppData\Local\Temp\surefire14718157878941992360\surefirebooter-20260505202536706_3.jar C:\Users\dell\AppData\Local\Temp\surefire14718157878941992360 2026-05-05T20-25-36_472-jvmRun1 surefire-20260505202536706_1tmp surefire_0-20260505202536706_2tmp"/>
+=======
+    <property name="sun.java.command" value="C:\Users\dell\AppData\Local\Temp\surefire6962730290984745769\surefirebooter-20260505204625661_3.jar C:\Users\dell\AppData\Local\Temp\surefire6962730290984745769 2026-05-05T20-46-25_473-jvmRun1 surefire-20260505204625661_1tmp surefire_0-20260505204625661_2tmp"/>
+>>>>>>> 2148a2e4082ac91fc9fa418a1fb841abd2d31055
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\dell\OneDrive\Desktop\bt tuan 9\bai2\target\test-classes;C:\Users\dell\OneDrive\Desktop\bt tuan 9\bai2\target\classes;C:\Users\dell\.m2\repository\ch\qos\logback\logback-classic\1.4.11\logback-classic-1.4.11.jar;C:\Users\dell\.m2\repository\ch\qos\logback\logback-core\1.4.11\logback-core-1.4.11.jar;C:\Users\dell\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar;C:\Users\dell\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.2\junit-jupiter-5.9.2.jar;C:\Users\dell\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\dell\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\dell\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\dell\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\dell\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.2\junit-jupiter-params-5.9.2.jar;C:\Users\dell\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\dell\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;C:\Users\dell\.m2\repository\com\google\guava\guava\18.0\guava-18.0.jar;C:\Users\dell\.m2\repository\org\apache\commons\commons-lang3\3.1\commons-lang3-3.1.jar;C:\Users\dell\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.5.0\jackson-databind-2.5.0.jar;C:\Users\dell\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.5.0\jackson-annotations-2.5.0.jar;C:\Users\dell\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.5.0\jackson-core-2.5.0.jar;C:\Users\dell\.m2\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar;C:\Users\dell\.m2\repository\org\hibernate\orm\hibernate-core\6.2.0.Final\hibernate-core-6.2.0.Final.jar;C:\Users\dell\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\dell\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\dell\.m2\repository\org\jboss\logging\jboss-logging\3.5.0.Final\jboss-logging-3.5.0.Final.jar;C:\Users\dell\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\dell\.m2\repository\io\smallrye\jandex\3.0.5\jandex-3.0.5.jar;C:\Users\dell\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\dell\.m2\repository\net\bytebuddy\byte-buddy\1.12.18\byte-buddy-1.12.18.jar;C:\Users\dell\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.0\jakarta.xml.bind-api-4.0.0.jar;C:\Users\dell\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.0\jakarta.activation-api-2.1.0.jar;C:\Users\dell\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.2\jaxb-runtime-4.0.2.jar;C:\Users\dell\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.2\jaxb-core-4.0.2.jar;C:\Users\dell\.m2\repository\org\eclipse\angus\angus-activation\2.0.0\angus-activation-2.0.0.jar;C:\Users\dell\.m2\repository\org\glassfish\jaxb\txw2\4.0.2\txw2-4.0.2.jar;C:\Users\dell\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.1\istack-commons-runtime-4.1.1.jar;C:\Users\dell\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\dell\.m2\repository\org\antlr\antlr4-runtime\4.10.1\antlr4-runtime-4.10.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +34,11 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
+<<<<<<< HEAD
     <property name="surefire.real.class.path" value="C:\Users\dell\AppData\Local\Temp\surefire14718157878941992360\surefirebooter-20260505202536706_3.jar"/>
+=======
+    <property name="surefire.real.class.path" value="C:\Users\dell\AppData\Local\Temp\surefire6962730290984745769\surefirebooter-20260505204625661_3.jar"/>
+>>>>>>> 2148a2e4082ac91fc9fa418a1fb841abd2d31055
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.2+10-LTS-69"/>
@@ -59,16 +67,25 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
+<<<<<<< HEAD
   <testcase name="testTransactionHistory" classname="bank_system.BankSystemTest" time="0.03">
     <system-out><![CDATA[20:25:37.820 [main] INFO bank_system.Account -- >>> [LOGGING] summary process started for type: 1
 20:25:37.824 [main] INFO bank_system.Account -- >>> [LOGGING] summary process started for type: 2
 20:25:37.824 [main] INFO bank_system.Account -- [DEBUG] Đã lấy lịch sử cho tài khoản: 12345
 20:25:37.825 [main] INFO bank_system.BankSystemTest -- Lịch sử giao dịch: 
+=======
+  <testcase name="testTransactionHistory" classname="bank_system.BankSystemTest" time="0.028">
+    <system-out><![CDATA[20:46:26.691 [main] INFO bank_system.Account -- >>> [LOGGING] summary process started for type: 1
+20:46:26.693 [main] INFO bank_system.Account -- >>> [LOGGING] summary process started for type: 2
+20:46:26.694 [main] INFO bank_system.Account -- [DEBUG] Đã lấy lịch sử cho tài khoản: 12345
+20:46:26.695 [main] INFO bank_system.BankSystemTest -- Lịch sử giao dịch: 
+>>>>>>> 2148a2e4082ac91fc9fa418a1fb841abd2d31055
 Lịch sử giao dịch của tài khoản 12345:
 - Kiểu giao dịch: Nạp tiền vãng lai. Số dư ban đầu: $1000.00. Số tiền: $200.00. Số dư cuối: $1200.00.
 - Kiểu giao dịch: Rút tiền vãng lai. Số dư ban đầu: $1200.00. Số tiền: $100.00. Số dư cuối: $1100.00.
 ]]></system-out>
   </testcase>
+<<<<<<< HEAD
   <testcase name="testInsufficientFunds" classname="bank_system.BankSystemTest" time="0.004">
     <system-out><![CDATA[20:25:37.837 [main] INFO bank_system.BankSystemTest -- Bắt đầu test rút tiền khi số dư không đủ...
 Số dư tài khoản không đủ $2000.00 để thực hiện giao dịch
@@ -84,6 +101,23 @@ Số dư tài khoản không đủ $2000.00 để thực hiện giao dịch
     <system-out><![CDATA[20:25:37.849 [main] INFO bank_system.BankSystemTest -- Bắt đầu test rút tiền quá hạn mức (1000$) của tài khoản tiết kiệm...
 20:25:37.850 [main] ERROR bank_system.Account -- Rut tien bi loi!
 20:25:37.850 [main] WARN bank_system.BankSystemTest -- Giao dịch rút 2000$ thất bại theo đúng thiết kế (Hạn mức 1000$).
+=======
+  <testcase name="testInsufficientFunds" classname="bank_system.BankSystemTest" time="0.002">
+    <system-out><![CDATA[20:46:26.703 [main] INFO bank_system.BankSystemTest -- Bắt đầu test rút tiền khi số dư không đủ...
+Số dư tài khoản không đủ $2000.00 để thực hiện giao dịch
+20:46:26.704 [main] ERROR bank_system.BankSystemTest -- Đã chặn giao dịch rút tiền vượt quá số dư hiện có.
+]]></system-out>
+  </testcase>
+  <testcase name="testDepositLogging" classname="bank_system.BankSystemTest" time="0.003">
+    <system-out><![CDATA[20:46:26.707 [main] INFO bank_system.BankSystemTest -- Bắt đầu test nạp tiền cho CheckingAccount...
+20:46:26.708 [main] INFO bank_system.BankSystemTest -- Nạp tiền thành công. Số dư hiện tại: 1500.0
+]]></system-out>
+  </testcase>
+  <testcase name="testWithdrawSavingsLimit" classname="bank_system.BankSystemTest" time="0.004">
+    <system-out><![CDATA[20:46:26.711 [main] INFO bank_system.BankSystemTest -- Bắt đầu test rút tiền quá hạn mức (1000$) của tài khoản tiết kiệm...
+20:46:26.712 [main] ERROR bank_system.Account -- Rut tien bi loi!
+20:46:26.712 [main] WARN bank_system.BankSystemTest -- Giao dịch rút 2000$ thất bại theo đúng thiết kế (Hạn mức 1000$).
+>>>>>>> 2148a2e4082ac91fc9fa418a1fb841abd2d31055
 ]]></system-out>
   </testcase>
 </testsuite>
