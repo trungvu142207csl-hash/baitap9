@@ -1,0 +1,25 @@
+name: Bài 6 - CI Optimization
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-with-cache:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17 with Maven Caching
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        # ĐÂY LÀ ĐIỂM CỐT LÕI CỦA BÀI 6
+        cache: 'maven'
+
+    - name: Build and Test
+      # Chạy build để GitHub có dữ liệu lưu vào cache
+      run: mvn -B verify --file bai6/pom.xml
