@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: bank_system.BankSystemTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.145 s -- in bank_system.BankSystemTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s -- in bank_system.BankSystemTest
