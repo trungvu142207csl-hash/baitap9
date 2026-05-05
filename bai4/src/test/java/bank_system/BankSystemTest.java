@@ -1,4 +1,5 @@
 package bank_system;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -78,5 +79,14 @@ public class BankSystemTest {
         // Nhưng sẽ THẤT BẠI trên ubuntu và macos vì chúng dùng dấu /
         assertNotNull(file.getPath());
         logger.info("Đang kiểm tra đường dẫn: {}", file.getPath());
+    }
+
+    @Test
+    void testDuongDanLoi() {
+        // Dấu gạch chéo ngược \ chỉ chạy trên Windows
+        java.io.File file = new java.io.File("target\\test.txt");
+        // Trên Linux/macOS, lệnh này có thể không ném lỗi ngay nhưng đường dẫn sẽ bị
+        // sai
+        assertTrue(file.getPath().contains("\\"));
     }
 }
