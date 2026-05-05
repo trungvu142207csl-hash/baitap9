@@ -21,6 +21,7 @@ public class BankSystemTest {
         checkingAccount = new CheckingAccount(12345L, 1000.0);
         savingsAccount = new SavingsAccount(67890L, 10000.0);
         bank = new Bank();
+        
     }
 
     @Test
