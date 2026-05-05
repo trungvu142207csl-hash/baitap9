@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Account.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BankSystem</a> &gt; <a href="index.source.html" class="el_package">bank_system</a> &gt; <span class="el_source">Account.java</span></div><h1>Account.java</h1><pre class="source lang-java linenums">package bank_system;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+// import java.util.*; // Vi phạm: Wildcard import (nên import cụ thể List, ArrayList)
+// import java.io.*;   // Vi phạm: Import thừa, không sử dụng
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Lớp này đại diện cho tài khoản nhưng viết Javadoc rất sơ sài và sai format
+ */
+public abstract class Account {
+<span class="fc" id="L14">    private static final Logger logger = LoggerFactory.getLogger(Account.class);</span>
+    // Vi phạm: Đặt tên hằng số không đúng chuẩn (phải là UPPER_SNAKE_CASE)
+    public static final String checking_type = &quot;CHECKING&quot;;
+    public static final String savings_type = &quot;SAVINGS&quot;;
+
+    // Vi phạm: Tên biến instance bắt đầu bằng dấu gạch dưới hoặc quá ngắn, không rõ nghĩa
+    private long _accNum; 
+    private double B; 
+    protected List&lt;Transaction&gt; list; 
+
+    // Vi phạm: Thụt lề (Indentation) không đồng nhất, không dùng 2 spaces theo chuẩn Google
+<span class="fc" id="L25">    public Account(long accountNumber, double balance) {</span>
+<span class="fc" id="L26">        this._accNum = accountNumber;</span>
+<span class="fc" id="L27">        this.B = balance;</span>
+<span class="fc" id="L28">        this.list = new ArrayList&lt;Transaction&gt;();</span>
+<span class="fc" id="L29">    }</span>
+
+    // Vi phạm: Viết hàm trên một dòng, thiếu khoảng trắng giữa các toán tử/ngoặc
+<span class="fc" id="L32">    public long getAccountNumber(){return _accNum;}</span>
+
+        public void setAccountNumber(long accountNumber) {
+<span class="fc" id="L35">            _accNum = accountNumber;</span>
+<span class="fc" id="L36">        }</span>
+
+        public double getBalance() {
+<span class="fc" id="L39">            return B;</span>
+        }
+
+        protected void setBalance(double balance) {
+<span class="nc" id="L43">            this.B = balance;</span>
+<span class="nc" id="L44">        }</span>
+
+        public List&lt;Transaction&gt; getTransactionList() {
+<span class="fc" id="L47">            return list;</span>
+        }
+
+        public void setTransactionList(List&lt;Transaction&gt; transactionList) {
+            // Vi phạm: Thiếu dấu ngoặc nhọn cho câu lệnh if (mặc dù vẫn chạy đúng)
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">            if (transactionList == null) </span>
+<span class="fc" id="L53">                this.list = new ArrayList&lt;Transaction&gt;();</span>
+            else 
+<span class="nc" id="L55">                this.list = transactionList;</span>
+<span class="fc" id="L56">        }</span>
+
+        // Vi phạm: Thiếu Javadoc cho phương thức public
+        public abstract void deposit(double amount);
+
+        public abstract void withdraw(double amount);
+
+        protected void doDepositing(double amount) throws InvalidFundingAmountException {
+            // Vi phạm: Whitespace quanh toán tử (amount&lt;=0)
+<span class="fc bfc" id="L65" title="All 2 branches covered.">            if (amount&lt;=0) {</span>
+<span class="fc" id="L66">                throw new InvalidFundingAmountException(amount);</span>
+            }
+<span class="fc" id="L68">            B += amount;</span>
+<span class="fc" id="L69">        }</span>
+
+        protected void doWithdrawing(double amount) throws Exception { 
+            // Vi phạm: Tung ra Exception quá chung chung thay vì Exception cụ thể
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            if (amount &lt;= 0) throw new InvalidFundingAmountException(amount);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">            if (amount &gt; B) throw new InsufficientFundsException(amount);</span>
+<span class="fc" id="L75">            B -= amount;</span>
+<span class="fc" id="L76">        }</span>
+
+        public void addTransaction(Transaction transaction) {
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">            if (transaction != null) {</span>
+<span class="fc" id="L80">                list.add(transaction);</span>
+            }
+<span class="fc" id="L82">        }</span>
+
+        public String getTransactionHistory() {
+            // Vi phạm: Dòng code quá dài (Line length) và dùng cộng chuỗi trong vòng lặp (Performance smell)
+<span class="fc" id="L86">            String s = &quot;Lịch sử giao dịch của tài khoản &quot; + _accNum + &quot;:\n&quot;; </span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">            for (int i = 0; i &lt; list.size(); i++) {</span>
+<span class="fc" id="L88">                s += list.get(i).getTransactionSummary(); // Vi phạm: Không dùng StringBuilder</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">                if (i &lt; list.size() - 1) s += &quot;\n&quot;;</span>
+            }
+            // Vi phạm: In log trực tiếp ra console để debug (Thay vì dùng Logger)
+<span class="fc" id="L92">            logger.info(&quot;[DEBUG] Đã lấy lịch sử cho tài khoản: &quot; + _accNum); </span>
+<span class="fc" id="L93">            return s;</span>
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">            if (this == obj) return true;</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">            if (!(obj instanceof Account)) return false;</span>
+<span class="fc" id="L100">            Account other = (Account) obj;</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            return this._accNum == other._accNum;</span>
+        }
+
+        @Override
+        public int hashCode() {
+            // Vi phạm: Format code lộn xộn
+<span class="fc" id="L107">            return (int) (_accNum ^ (_accNum &gt;&gt;&gt; 32));</span>
+        }
+    }
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
