@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Bank.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BankSystem</a> &gt; <a href="index.source.html" class="el_package">bank_system</a> &gt; <span class="el_source">Bank.java</span></div><h1>Bank.java</h1><pre class="source lang-java linenums">package bank_system;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.io.*; // Vi phạm: Wildcard import
+import java.util.*; // Vi phạm: Wildcard import
+
+public class Bank {
+    // Vi phạm: Tên biến không rõ nghĩa, viết tắt sai chuẩn camelCase
+<span class="fc" id="L9">    private static final Logger logger = LoggerFactory.getLogger(Account.class);</span>
+    private List&lt;Customer&gt; c_list; 
+
+<span class="fc" id="L12">    public Bank() {</span>
+<span class="fc" id="L13">        this.c_list = new ArrayList&lt;Customer&gt;();</span>
+<span class="fc" id="L14">    }</span>
+
+    public List&lt;Customer&gt; getCustomerList() {
+<span class="fc" id="L17">        return c_list;</span>
+    }
+
+    // Vi phạm: Thụt đầu dòng (Indentation) lung tung và Javadoc thiếu tag @param
+    /**
+     * Set danh sach khach hang
+     */
+    public void setCustomerList(List&lt;Customer&gt; customerList) {
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">        if (customerList == null) {</span>
+<span class="fc" id="L26">            this.c_list = new ArrayList&lt;Customer&gt;();</span>
+        } else {
+<span class="nc" id="L28">            this.c_list = customerList;</span>
+        }
+<span class="fc" id="L30">    }</span>
+
+    /**
+     * Ham nay rat dai và khó doc
+     */
+    public void readCustomerList(InputStream inputStream) {
+        // Vi phạm: Log trực tiếp bằng System.out
+        // System.out.println(&quot;DEBUG: Bat dau doc du lieu...&quot;); 
+<span class="fc" id="L38">        logger.info(&quot;DEBUG: Bat dau doc du lieu...&quot;);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (inputStream != null) {</span>
+<span class="fc" id="L40">            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));</span>
+            String line;
+<span class="fc" id="L42">            Customer current = null;</span>
+            try {
+<span class="fc bfc" id="L44" title="All 2 branches covered.">                while ((line = reader.readLine()) != null) {</span>
+<span class="fc" id="L45">                    line = line.trim();</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">                    if (!line.isEmpty()) { // Vi phạm: Lồng nested if quá sâu</span>
+<span class="fc" id="L47">                        int last = line.lastIndexOf(' ');</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">                        if (last &gt; 0) {</span>
+<span class="fc" id="L49">                            String token = line.substring(last + 1).trim();</span>
+                            // Vi phạm: Dùng biểu thức chính quy trực tiếp (Magic String)
+<span class="fc bfc" id="L51" title="All 2 branches covered.">                            if (token.matches(&quot;\\d{9}&quot;)) {</span>
+<span class="fc" id="L52">                                String name = line.substring(0, last).trim();</span>
+<span class="fc" id="L53">                                current = new Customer(Long.parseLong(token), name);</span>
+<span class="fc" id="L54">                                c_list.add(current);</span>
+<span class="fc" id="L55">                                System.out.println(&quot;Log: Them khach hang &quot; + name);</span>
+<span class="fc" id="L56">                            } else {</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">                                if (current != null) {</span>
+<span class="fc" id="L58">                                    String[] parts = line.split(&quot;\\s+&quot;);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">                                    if (parts.length &gt;= 3) {</span>
+<span class="fc" id="L60">                                        long num = Long.parseLong(parts[0]);</span>
+<span class="fc" id="L61">                                        double bal = Double.parseDouble(parts[2]);</span>
+                                        // Vi phạm: So sánh String dùng toán tử == (nếu lỡ tay) hoặc không xử lý hằng số
+<span class="fc bfc" id="L63" title="All 2 branches covered.">                                        if (parts[1].equals(&quot;CHECKING&quot;)) {</span>
+<span class="fc" id="L64">                                            current.addAccount(new CheckingAccount(num, bal));</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">                                        } else if (parts[1].equals(&quot;SAVINGS&quot;)) {</span>
+<span class="fc" id="L66">                                            current.addAccount(new SavingsAccount(num, bal));</span>
+                                        }
+                                    }
+                                }
+                            }
+                        }
+<span class="fc" id="L72">                    }</span>
+                }
+<span class="fc" id="L74">            } catch (Exception e) { // Vi phạm: Catch Exception chung chung</span>
+<span class="fc" id="L75">                logger.error(&quot;Error: &quot; + e.getMessage());</span>
+<span class="fc" id="L76">            }</span>
+        }
+<span class="fc" id="L78">    }</span>
+
+    public String getCustomersInfoByIdOrder() {
+        // Vi phạm: Dùng Anonymous class thay vì Lambda, thụt lề sai
+<span class="fc" id="L82">        Collections.sort(c_list, new Comparator&lt;Customer&gt;() {</span>
+            @Override
+            public int compare(Customer o1, Customer o2) {
+<span class="nc" id="L85">                return Long.compare(o1.getIdNumber(), o2.getIdNumber());</span>
+            }
+        });
+
+        // Vi phạm: Cộng chuỗi (String concatenation) trong vòng lặp - Cực tệ cho performance
+<span class="fc" id="L90">        String res = &quot;&quot;;</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        for (int i = 0; i &lt; c_list.size(); i++) {</span>
+<span class="fc" id="L92">            res += c_list.get(i).getCustomerInfo(); </span>
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">            if (i &lt; c_list.size() - 1) res += &quot;\n&quot;;</span>
+        }
+<span class="fc" id="L95">        return res;</span>
+    }
+
+    public String getCustomersInfoByNameOrder() {
+        // Vi phạm: Logic trùng lặp nhiều với hàm trên (Code Duplication)
+<span class="fc" id="L100">        List&lt;Customer&gt; copy = new ArrayList&lt;Customer&gt;(c_list);</span>
+<span class="fc" id="L101">        Collections.sort(copy, (c1, c2) -&gt; {</span>
+<span class="fc" id="L102">            int res = c1.getFullName().compareTo(c2.getFullName());</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">            return res != 0 ? res : Long.compare(c1.getIdNumber(), c2.getIdNumber());</span>
+        });
+
+        // Vi phạm: Dòng code quá dài, không ngắt dòng
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        StringBuilder sb = new StringBuilder(); for (Customer c : copy) { sb.append(c.getCustomerInfo()).append(&quot;\n&quot;); }</span>
+<span class="fc" id="L108">        return sb.toString().trim();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
