@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Checkstyle
         # Chạy checkstyle để tạo file xml kết quả
-        run: mvn checkstyle:checkstyle -Dcheckstyle.includes=**/bai7/** --file pom.xml
+        run: mvn checkstyle:checkstyle -Dcheckstyle.includes=**/bai7/** --file bai7/pom.xml
 
       - name: Inline Feedback
         # Sử dụng action để tự động comment vào đúng dòng code lỗi
