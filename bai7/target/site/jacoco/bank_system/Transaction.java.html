@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Transaction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BankSystem</a> &gt; <a href="index.source.html" class="el_package">bank_system</a> &gt; <span class="el_source">Transaction.java</span></div><h1>Transaction.java</h1><pre class="source lang-java linenums">package bank_system;
+import java.util.Locale;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+/**
+ * Đại diện cho một giao dịch.
+ */
+public class Transaction {
+<span class="fc" id="L9">    private static final Logger logger = LoggerFactory.getLogger(Account.class);</span>
+    public static final int TYPE_DEPOSIT_CHECKING = 1;
+    public static final int TYPE_WITHDRAW_CHECKING = 2;
+    public static final int TYPE_DEPOSIT_SAVINGS = 3;
+    public static final int TYPE_WITHDRAW_SAVINGS = 4;
+
+    private int type;
+    private double amount;
+    private double initialBalance;
+    private double finalBalance;
+
+<span class="fc" id="L20">    public Transaction(int type, double amount, double initialBalance, double finalBalance) {</span>
+<span class="fc" id="L21">        this.type = type;</span>
+<span class="fc" id="L22">        this.amount = amount;</span>
+<span class="fc" id="L23">        this.initialBalance = initialBalance;</span>
+<span class="fc" id="L24">        this.finalBalance = finalBalance;</span>
+<span class="fc" id="L25">    }</span>
+
+    public int getType() {
+<span class="fc" id="L28">        return type;</span>
+    }
+
+    public void setType(int type) {
+<span class="fc" id="L32">        this.type = type;</span>
+<span class="fc" id="L33">    }</span>
+
+    public double getAmount() {
+<span class="fc" id="L36">        return amount;</span>
+    }
+
+    public void setAmount(double amount) {
+<span class="fc" id="L40">        this.amount = amount;</span>
+<span class="fc" id="L41">    }</span>
+
+    public double getInitialBalance() {
+<span class="fc" id="L44">        return initialBalance;</span>
+    }
+
+    public void setInitialBalance(double initialBalance) {
+<span class="fc" id="L48">        this.initialBalance = initialBalance;</span>
+<span class="fc" id="L49">    }</span>
+
+    public double getFinalBalance() {
+<span class="fc" id="L52">        return finalBalance;</span>
+    }
+
+    public void setFinalBalance(double finalBalance) {
+<span class="fc" id="L56">        this.finalBalance = finalBalance;</span>
+<span class="fc" id="L57">    }</span>
+
+    // Vi phạm: Thiếu Javadoc cho phương thức public (Google Style cực kỳ khắt khe lỗi này)
+    // Vi phạm: Tên phương thức không tuân thủ camelCase (có dấu gạch dưới)
+    // Vi phạm: Tên tham số 't' quá ngắn, không rõ nghĩa
+    public static String get_type_string(int t) {
+<span class="fc bfc" id="L63" title="All 5 branches covered.">        switch (t) {</span>
+            // Vi phạm: Thụt lề (Indentation) sai chuẩn, không nhất quán
+            case 1: // Vi phạm: Magic Number '1' thay vì dùng TYPE_DEPOSIT_CHECKING
+<span class="fc" id="L66">                return &quot;Nạp tiền vãng lai&quot;;</span>
+            case 2: // Vi phạm: Magic Number '2'
+<span class="fc" id="L68">                return &quot;Rút tiền vãng lai&quot;;</span>
+            case 3: // Vi phạm: Magic Number '3'
+<span class="fc" id="L70">                return &quot;Nạp tiền tiết kiệm&quot;;</span>
+            case 4: 
+<span class="fc" id="L72">                return &quot;Rút tiền tiết kiệm&quot;;</span>
+            default:
+<span class="fc" id="L74">                return &quot;Không rõ&quot;;</span>
+        }
+    }
+
+    public String getTransactionSummary() {
+        // Vi phạm: Logging lộn xộn, dùng trực tiếp System.out, format tùy tiện
+<span class="fc" id="L80">        logger.info(&quot;&gt;&gt;&gt; [LOGGING] summary process started for type: &quot; + this.type);</span>
+
+        // Vi phạm Cực nặng: Dòng code siêu dài (Line Length &gt; 200 ký tự)
+        // Vi phạm: Thiếu khoảng trắng (Whitespace) quanh các toán tử '+'
+        // Vi phạm: Không sử dụng biến tạm, nhồi nhét mọi logic format vào một dòng
+        // Vi phạm: Gọi trực tiếp hàm Locale.US nhiều lần thay vì hằng số hoặc format chung
+<span class="fc" id="L86">        return &quot;- Kiểu giao dịch: &quot;+get_type_string(type)+&quot;. Số dư ban đầu: $&quot;+String.format(java.util.Locale.US,&quot;%.2f&quot;,initialBalance)+&quot;. Số tiền: $&quot;+String.format(java.util.Locale.US,&quot;%.2f&quot;,amount)+&quot;. Số dư cuối: $&quot;+String.format(java.util.Locale.US,&quot;%.2f&quot;,finalBalance)+&quot;.&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
