@@ -1,8 +1,14 @@
+package bank_system;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Tai khoan tiet kiem - Lop nay thuc thi cac quy dinh ve rut tien và nap tien.
  */
-public class SavingsAccount extends Account 
-{ // Vi phạm: Dấu ngoặc nhọn mở đầu dòng mới (Google Style yêu cầu cùng dòng)
+public class SavingsAccount extends Account { // Vi phạm: Dấu ngoặc nhọn mở đầu dòng mới (Google Style yêu cầu cùng
+                                              // dòng)
+    private static final Logger logger = LoggerFactory.getLogger(Account.class);
 
     public SavingsAccount(long n, double b) {
         super(n, b);
@@ -11,8 +17,8 @@ public class SavingsAccount extends Account
     @Override
     public void deposit(double a) {
         // Vi phạm: Log không có cấu trúc, sử dụng System.err lộn xộn
-        logger.error("Giao dich dang xu ly..."); 
-        double iB = getBalance(); 
+        logger.error("Giao dich dang xu ly...");
+        double iB = getBalance();
         try {
             doDepositing(a);
             double fB = getBalance();
@@ -38,20 +44,20 @@ public class SavingsAccount extends Account
             if (iB - a < 5000.0) {
                 throw new InsufficientFundsException(a);
             }
-            
+
             doWithdrawing(a);
             double fB = getBalance();
-            
+
             // Vi phạm: Magic Number '4' (Nên dùng Transaction.TYPE_WITHDRAW_SAVINGS)
             Transaction t = new Transaction(4, a, iB, fB);
             addTransaction(t);
-            
+
             // Vi phạm: Log viết theo phong cách tùy tiện
             logger.info("[SAVINGS] Rut " + a + " thanh cong. So du con: " + fB);
         } catch (Exception e) {
             // Vi phạm: Thiếu dấu ngoặc nhọn cho khối catch đơn dòng (tùy chuẩn)
             // Vi phạm: Log lỗi nhưng không ghi rõ lỗi gì hoặc stack trace
-            logger.error("Rut tien bi loi!"); 
+            logger.error("Rut tien bi loi!");
         }
     }
 }

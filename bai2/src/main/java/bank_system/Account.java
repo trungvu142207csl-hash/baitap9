@@ -1,5 +1,6 @@
-package banksystem;
-
+package bank_system;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // import java.util.*; // Vi phạm: Wildcard import (nên import cụ thể List, ArrayList)
 // import java.io.*;   // Vi phạm: Import thừa, không sử dụng
@@ -10,6 +11,7 @@ import java.util.List;
  * Lớp này đại diện cho tài khoản nhưng viết Javadoc rất sơ sài và sai format
  */
 public abstract class Account {
+    private static final Logger logger = LoggerFactory.getLogger(Account.class);
     // Vi phạm: Đặt tên hằng số không đúng chuẩn (phải là UPPER_SNAKE_CASE)
     public static final String checking_type = "CHECKING";
     public static final String savings_type = "SAVINGS";

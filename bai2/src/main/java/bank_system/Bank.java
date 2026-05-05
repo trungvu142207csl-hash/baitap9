@@ -1,8 +1,12 @@
+package bank_system;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.*; // Vi phạm: Wildcard import
 import java.util.*; // Vi phạm: Wildcard import
 
 public class Bank {
     // Vi phạm: Tên biến không rõ nghĩa, viết tắt sai chuẩn camelCase
+    private static final Logger logger = LoggerFactory.getLogger(Account.class);
     private List<Customer> c_list; 
 
     public Bank() {

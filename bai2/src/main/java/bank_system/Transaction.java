@@ -1,9 +1,12 @@
+package bank_system;
 import java.util.Locale;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Đại diện cho một giao dịch.
  */
 public class Transaction {
+    private static final Logger logger = LoggerFactory.getLogger(Account.class);
     public static final int TYPE_DEPOSIT_CHECKING = 1;
     public static final int TYPE_WITHDRAW_CHECKING = 2;
     public static final int TYPE_DEPOSIT_SAVINGS = 3;

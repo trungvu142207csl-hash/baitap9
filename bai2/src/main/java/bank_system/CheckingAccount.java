@@ -1,7 +1,11 @@
+package bank_system;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Tài khoản vãng lai.
  */
 public class CheckingAccount extends Account {
+    private static final Logger logger = LoggerFactory.getLogger(Account.class);
     public CheckingAccount(long accountNumber, double balance) {
         super(accountNumber, balance);
     }
@@ -20,7 +24,7 @@ public class CheckingAccount extends Account {
             addTransaction(t);
         } catch (BankException e) {
             System.out.println(e.getMessage());
-        }
+        }catch(Exception e){System.out.println(e.getMessage());}
     }
 
     @Override
@@ -37,6 +41,6 @@ public class CheckingAccount extends Account {
             addTransaction(t);
         } catch (BankException e) {
             System.out.println(e.getMessage());
-        }
+        }catch(Exception e){System.out.println(e.getMessage());}
     }
 }

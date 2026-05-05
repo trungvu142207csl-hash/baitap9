@@ -1,10 +1,14 @@
+package bank_system;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Lớp Customer đại diện cho một khách hàng.
  */
 public class Customer {
+    private static final Logger logger = LoggerFactory.getLogger(Account.class);
     private long idNumber;
     private String fullName;
     private List<Account> accountList;
